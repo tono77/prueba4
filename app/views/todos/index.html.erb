@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="row">
+		<% @todos.each_slice(4) do |row| %>
+
+			<% row.each do |todo| %>
+
+				<div class="col">
+					<div class="card">
+						<%= todo.name  %>
+						<div class="body">
+							<%= link_to image_tag(todo.photo , class: 'card-img-top'), url_for(todo)%>
+							
+
+							<% if  todo.users.include?(current_user) %>
+								<%= link_to "Listo", todo_log_path(todo,current_user) , class: 'btn btn-outline-success', method: :delete %>
+							<% else %>
+								<%= link_to "No Listo", todo_logs_path(todo) , class: 'btn btn-outline-danger', method: :post %>
+							<% end %>
+							
+
+						</div>
+					</div>
+				</div>
+			<% end %>
+			<div class="w-100" style="margin-top:20px"></div>
+		<% end %>
+	</div>
+</div>

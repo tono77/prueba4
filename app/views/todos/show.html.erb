@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong> <%= @todo.name %></strong>
+ 
+</p>
+
+<p>
+	<%= image_tag(@todo.photo , class: 'card-img-top') %>
+</p>
+
+<p>
+  <strong>Usuarios que han completado la tarea:</strong>
+
+  <%= @todo.users.pluck(:email).join(", ") %>
+</p>
+
